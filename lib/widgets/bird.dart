@@ -10,7 +10,7 @@ class Bird extends StatelessWidget {
       alignment: Alignment(0, y),
       child: Image.asset(
         "assets/bird.png",
-        width: 90,
+        width: 50,
       ),
     );
   }

@@ -15,22 +15,62 @@ class _HomePageState extends State<HomePage> {
   double height = 0;
   double initPosition = y;
   double time = 0;
-  double gravity = -5;
-  double velocity = 3;
+  double gravity = -2.5;
+  double speed = 3;
   bool isGameStarted = false;
 
   void initGame() {
     isGameStarted = true;
     Timer.periodic(const Duration(milliseconds: 50), (timer) {
-      height = gravity * time * time + velocity * time;
+      height = gravity * time * time + speed * time;
       setState(() {
         y = initPosition - height;
       });
-      if (y < -1 || y > 1) {
+      if (playerLost()) {
         timer.cancel();
+        isGameStarted = false;
+        _showDialog();
       }
+
       time += 0.1;
     });
+  }
+
+  void resetGame() {
+    setState(() {
+      y = 0;
+      initPosition = 0;
+      height = 0;
+      time = 0;
+      isGameStarted = false;
+    });
+  }
+
+  void _showDialog() {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog.adaptive(
+            title: const Center(
+                child: Text(
+              "G A M E   O V E R",
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            )),
+            backgroundColor: Colors.grey,
+            content: Container(),
+            actions: [],
+          );
+        });
+  }
+
+  bool playerLost() {
+    if (y < -1 || y > 1) {
+      return true;
+    }
+    return false;
   }
 
   void jump() {
@@ -56,9 +96,10 @@ class _HomePageState extends State<HomePage> {
                       Bird(y: y),
                       Container(
                         alignment: const Alignment(0, -0.5),
-                        child: const Text(
-                          "TAP TO PLAY",
-                          style: TextStyle(color: Colors.white, fontSize: 22),
+                        child: Text(
+                          isGameStarted ? "" : "T A P   T O   P L A Y",
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 22),
                         ),
                       )
                     ],
