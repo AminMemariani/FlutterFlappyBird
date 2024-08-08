@@ -11,20 +11,39 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  double y = 0;
+  static double y = 0;
+  double height = 0;
+  double initPosition = y;
+  double time = 0;
+  double gravity = -5;
+  double velocity = 3;
+  bool isGameStarted = false;
+
+  void initGame() {
+    isGameStarted = true;
+    Timer.periodic(const Duration(milliseconds: 50), (timer) {
+      height = gravity * time * time + velocity * time;
+      setState(() {
+        y = initPosition - height;
+      });
+      if (y < -1 || y > 1) {
+        timer.cancel();
+      }
+      time += 0.1;
+    });
+  }
 
   void jump() {
-    Timer.periodic(const Duration(milliseconds: 50), (timer) {
-      setState(() {
-        y -= 0.05;
-      });
+    setState(() {
+      time = 0;
+      initPosition = y;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: jump,
+      onTap: isGameStarted ? jump : initGame,
       child: Scaffold(
         body: Column(children: [
           Expanded(
@@ -33,7 +52,16 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.blue,
                 child: Center(
                   child: Stack(
-                    children: [Bird(y: y)],
+                    children: [
+                      Bird(y: y),
+                      Container(
+                        alignment: const Alignment(0, -0.5),
+                        child: const Text(
+                          "TAP TO PLAY",
+                          style: TextStyle(color: Colors.white, fontSize: 22),
+                        ),
+                      )
+                    ],
                   ),
                 ),
               )),
