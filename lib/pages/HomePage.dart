@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   double height = 0;
   double initPosition = y;
   double time = 0;
-  double gravity = -2.5;
+  double gravity = -2.3;
   double speed = 3;
   bool isGameStarted = false;
 
@@ -37,6 +37,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void resetGame() {
+    Navigator.pop(context);
     setState(() {
       y = 0;
       initPosition = 0;
@@ -59,9 +60,25 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.white,
               ),
             )),
-            backgroundColor: Colors.grey,
+            backgroundColor: Colors.grey[700],
             content: Container(),
-            actions: [],
+            actions: [
+              GestureDetector(
+                  onTap: resetGame,
+                  child: Center(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        padding: const EdgeInsets.all(7),
+                        color: Colors.white,
+                        child: Text(
+                          "PLAY AGAIN",
+                          style: TextStyle(color: Colors.grey[700]),
+                        ),
+                      ),
+                    ),
+                  ))
+            ],
           );
         });
   }
@@ -99,7 +116,9 @@ class _HomePageState extends State<HomePage> {
                         child: Text(
                           isGameStarted ? "" : "T A P   T O   P L A Y",
                           style: const TextStyle(
-                              color: Colors.white, fontSize: 22),
+                              color: Colors.white,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold),
                         ),
                       )
                     ],
