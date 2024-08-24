@@ -17,7 +17,15 @@ class _HomePageState extends State<HomePage> {
   double time = 0;
   double gravity = -2.3;
   double speed = 3;
+  double birdWidth = 0.1;
+  double birdHeight = 0.1;
   bool isGameStarted = false;
+  static List<double> barrierX = [2, 2 + 1.5];
+  static double barrierWidth = 0.5;
+  List<List<double>> barrierHeight = [
+    [0.6, 0, 4],
+    [0.4, 0, 6]
+  ];
 
   void initGame() {
     isGameStarted = true;
@@ -86,6 +94,14 @@ class _HomePageState extends State<HomePage> {
   bool playerLost() {
     if (y < -1 || y > 1) {
       return true;
+    }
+    for (int i = 0; i < barrierX.length; i++) {
+      if (barrierX[i] <= birdWidth &&
+              barrierX[i] + barrierWidth >= -birdHeight &&
+              (y <= -1 + barrierHeight[i][0]) ||
+          y + birdHeight >= 1 - barrierHeight[i][1]) {
+        return true;
+      }
     }
     return false;
   }
