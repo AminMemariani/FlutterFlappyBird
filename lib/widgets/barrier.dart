@@ -7,7 +7,8 @@ class Barrier extends StatelessWidget {
   final bool isBottomBarrier;
 
   const Barrier(
-      {super.key, required this.barrierWidth,
+      {super.key,
+      required this.barrierWidth,
       required this.barrierHeight,
       required this.barrierX,
       required this.isBottomBarrier});

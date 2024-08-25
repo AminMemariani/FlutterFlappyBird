@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flappy_bird/widgets/barrier.dart';
 import 'package:flappy_bird/widgets/bird.dart';
 import 'package:flutter/material.dart';
 
@@ -136,13 +137,74 @@ class _HomePageState extends State<HomePage> {
                               fontSize: 22,
                               fontWeight: FontWeight.bold),
                         ),
-                      )
+                      ),
+                      Barrier(
+                          barrierWidth: barrierWidth,
+                          barrierHeight: barrierHeight[0][0],
+                          barrierX: barrierX[0],
+                          isBottomBarrier: false),
+                      Barrier(
+                          barrierWidth: barrierWidth,
+                          barrierHeight: barrierHeight[0][1],
+                          barrierX: barrierX[0],
+                          isBottomBarrier: false),
+                      Barrier(
+                          barrierWidth: barrierWidth,
+                          barrierHeight: barrierHeight[1][0],
+                          barrierX: barrierX[0],
+                          isBottomBarrier: false),
+                      Barrier(
+                          barrierWidth: barrierWidth,
+                          barrierHeight: barrierHeight[1][1],
+                          barrierX: barrierX[0],
+                          isBottomBarrier: false),
                     ],
                   ),
                 ),
               )),
+          Container(
+            height: 15,
+            color: Colors.green,
+          ),
           Expanded(
               child: Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "CURRENT SCORE",
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      "0",
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                  ],
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "HIGH SCORE",
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      "0",
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                  ],
+                )
+              ],
+            ),
             color: Colors.brown,
           ))
         ]),
