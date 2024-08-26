@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flappy_bird/widgets/barrier.dart';
 import 'package:flappy_bird/widgets/bird.dart';
 import 'package:flutter/material.dart';
 
@@ -116,98 +115,25 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: isGameStarted ? jump : initGame,
-      child: Scaffold(
-        body: Column(children: [
+    return Scaffold(
+      body: Column(
+        children: [
           Expanded(
               flex: 3,
-              child: Container(
-                color: Colors.blue,
-                child: Center(
-                  child: Stack(
-                    children: [
-                      Bird(y: y),
-                      Container(
-                        alignment: const Alignment(0, -0.5),
-                        child: Text(
-                          isGameStarted ? "" : "T A P   T O   P L A Y",
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Barrier(
-                          barrierWidth: barrierWidth,
-                          barrierHeight: barrierHeight[0][0],
-                          barrierX: barrierX[0],
-                          isBottomBarrier: false),
-                      Barrier(
-                          barrierWidth: barrierWidth,
-                          barrierHeight: barrierHeight[0][1],
-                          barrierX: barrierX[0],
-                          isBottomBarrier: false),
-                      Barrier(
-                          barrierWidth: barrierWidth,
-                          barrierHeight: barrierHeight[1][0],
-                          barrierX: barrierX[0],
-                          isBottomBarrier: false),
-                      Barrier(
-                          barrierWidth: barrierWidth,
-                          barrierHeight: barrierHeight[1][1],
-                          barrierX: barrierX[0],
-                          isBottomBarrier: false),
-                    ],
-                  ),
+              child: GestureDetector(
+                onTap: isGameStarted ? jump : initGame,
+                child: AnimatedContainer(
+                  color: Colors.blue,
+                  duration: const Duration(milliseconds: 0),
+                  alignment: Alignment(0, y),
+                  child: Bird(y: y),
                 ),
               )),
           Container(
             height: 15,
             color: Colors.green,
           ),
-          Expanded(
-              child: Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "CURRENT SCORE",
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      "0",
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "HIGH SCORE",
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      "0",
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    ),
-                  ],
-                )
-              ],
-            ),
-            color: Colors.brown,
-          ))
-        ]),
+        ],
       ),
     );
   }
