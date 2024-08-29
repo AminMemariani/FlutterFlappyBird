@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flappy_bird/widgets/barrier.dart';
 import 'package:flappy_bird/widgets/bird.dart';
 import 'package:flutter/material.dart';
 
@@ -141,7 +142,8 @@ class _HomePageState extends State<HomePage> {
                               fontSize: 18,
                               fontWeight: FontWeight.bold),
                         ),
-                )
+                ),
+                const Barrier(size: 200),
               ])),
           Container(
             height: 15,
