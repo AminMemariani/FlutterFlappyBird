@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
 
   void initGame() {
     isGameStarted = true;
-    Timer.periodic(const Duration(milliseconds: 50), (timer) {
+    Timer.periodic(const Duration(milliseconds: 60), (timer) {
       height = gravity * time * time + speed * time;
       setState(() {
         y = initPosition - height;
@@ -140,7 +140,7 @@ class _HomePageState extends State<HomePage> {
                   child: isGameStarted
                       ? const Text("")
                       : const Text(
-                          "T A P  T O P L A Y",
+                          "T A P   T O   P L A Y",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 18,
@@ -149,12 +149,12 @@ class _HomePageState extends State<HomePage> {
                 ),
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 0),
-                  alignment: const Alignment(0, -1),
+                  alignment: const Alignment(1, -1),
                   child: const Barrier(size: 160),
                 ),
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 0),
-                  alignment: const Alignment(0, 1),
+                  alignment: const Alignment(1, 1),
                   child: const Barrier(size: 240),
                 ),
               ])),

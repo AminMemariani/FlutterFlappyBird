@@ -12,11 +12,10 @@ class Barrier extends StatelessWidget {
       height: size,
       decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(5)),
-          gradient: LinearGradient(colors: [
-            Colors.green.shade400,
-            Colors.green.shade100,
-            Colors.green.shade400
-          ], begin: Alignment.centerLeft, end: Alignment.centerRight)),
+          gradient: LinearGradient(
+              colors: [Colors.green, Colors.green.shade200, Colors.green],
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight)),
     );
   }
 }
