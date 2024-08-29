@@ -16,8 +16,8 @@ class _HomePageState extends State<HomePage> {
   double height = 0;
   double initPosition = y;
   double time = 0;
-  double gravity = -2.3;
-  double speed = 3;
+  double gravity = -2.0;
+  double speed = 1.4;
   double birdWidth = 0.1;
   double birdHeight = 0.1;
   bool isGameStarted = false;
@@ -70,7 +70,6 @@ class _HomePageState extends State<HomePage> {
               ),
             )),
             backgroundColor: Colors.grey[700],
-            content: Container(),
             actions: [
               GestureDetector(
                   onTap: resetGame,
@@ -78,11 +77,16 @@ class _HomePageState extends State<HomePage> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Container(
-                        padding: const EdgeInsets.all(7),
-                        color: Colors.white,
+                        width: double.infinity,
+                        padding: const EdgeInsets.only(top: 16, bottom: 16),
                         child: Text(
                           "PLAY AGAIN",
-                          style: TextStyle(color: Colors.grey[700]),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.grey[700],
+                            fontSize: 18,
+                            fontStyle: FontStyle.normal,
+                          ),
                         ),
                       ),
                     ),
