@@ -120,15 +120,29 @@ class _HomePageState extends State<HomePage> {
         children: [
           Expanded(
               flex: 3,
-              child: GestureDetector(
-                onTap: isGameStarted ? jump : initGame,
-                child: AnimatedContainer(
-                  color: Colors.blue,
-                  duration: const Duration(milliseconds: 0),
-                  alignment: Alignment(0, y),
-                  child: Bird(y: y),
+              child: Stack(children: [
+                GestureDetector(
+                  onTap: isGameStarted ? jump : initGame,
+                  child: AnimatedContainer(
+                    color: Colors.blue,
+                    duration: const Duration(milliseconds: 0),
+                    alignment: Alignment(0, y),
+                    child: Bird(y: y),
+                  ),
                 ),
-              )),
+                Container(
+                  alignment: const Alignment(0, -0.3),
+                  child: isGameStarted
+                      ? const Text("")
+                      : const Text(
+                          "T A P  T O P L A Y",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                )
+              ])),
           Container(
             height: 15,
             color: Colors.green,
