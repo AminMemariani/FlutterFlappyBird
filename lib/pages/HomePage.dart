@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   double height = 0;
   double initPosition = y;
   double time = 0;
-  double gravity = -2.0;
+  double gravity = -1.1;
   double speed = 1.4;
   double birdWidth = 0.1;
   double birdHeight = 0.1;
@@ -150,12 +150,12 @@ class _HomePageState extends State<HomePage> {
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 0),
                   alignment: const Alignment(0, -1),
-                  child: const Barrier(size: 200),
+                  child: const Barrier(size: 160),
                 ),
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 0),
                   alignment: const Alignment(0, 1),
-                  child: const Barrier(size: 200),
+                  child: const Barrier(size: 240),
                 ),
               ])),
           Container(
