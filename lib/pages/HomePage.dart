@@ -149,9 +149,14 @@ class _HomePageState extends State<HomePage> {
                 ),
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 0),
+                  alignment: const Alignment(0, -1),
+                  child: const Barrier(size: 200),
+                ),
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 0),
                   alignment: const Alignment(0, 1),
                   child: const Barrier(size: 200),
-                )
+                ),
               ])),
           Container(
             height: 15,
