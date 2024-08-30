@@ -21,6 +21,8 @@ class _HomePageState extends State<HomePage> {
   double birdWidth = 0.1;
   double birdHeight = 0.1;
   bool isGameStarted = false;
+  double oddBarrierX = 1;
+  double evenBarrierX = 2.4;
   static List<double> barrierX = [2, 2 + 1.5];
   static double barrierWidth = 0.5;
   List<List<double>> barrierHeight = [
@@ -34,6 +36,20 @@ class _HomePageState extends State<HomePage> {
       height = gravity * time * time + speed * time;
       setState(() {
         y = initPosition - height;
+      });
+      setState(() {
+        if (oddBarrierX < -1.3) {
+          oddBarrierX += 2.4;
+        } else {
+          oddBarrierX -= 0.01;
+        }
+      });
+      setState(() {
+        if (evenBarrierX < -1.3) {
+          evenBarrierX += 2.4;
+        } else {
+          evenBarrierX -= 0.01;
+        }
       });
       if (playerLost()) {
         timer.cancel();
@@ -149,13 +165,23 @@ class _HomePageState extends State<HomePage> {
                 ),
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 0),
-                  alignment: const Alignment(1, -1),
+                  alignment: Alignment(oddBarrierX, -1),
                   child: const Barrier(size: 160),
                 ),
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 0),
-                  alignment: const Alignment(1, 1),
+                  alignment: Alignment(oddBarrierX, 1),
                   child: const Barrier(size: 240),
+                ),
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 0),
+                  alignment: Alignment(evenBarrierX, -1),
+                  child: const Barrier(size: 120),
+                ),
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 0),
+                  alignment: Alignment(evenBarrierX, 1),
+                  child: const Barrier(size: 280),
                 ),
               ])),
           Container(
