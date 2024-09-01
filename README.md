@@ -44,16 +44,6 @@ flutter doctor
 
 This command should output a success message indicating that the Flutter SDK is installed and configured correctly. If you encounter any issues, follow the instructions provided by `flutter doctor` to resolve them.
 
-**Creating a New Flutter Project (optional):**
-
-If you don't have an existing Flutter project, you can create a new one using the following command:
-
-```bash
-flutter create my_app
-```
-
-Replace `my_app` with the desired name for your project. This will create a new directory with the project structure and basic boilerplate code for your Flutter app.
-
 **Running the App on Different Platforms:**
 
 Once you have your project set up, you can run your Flutter app on various platforms:
