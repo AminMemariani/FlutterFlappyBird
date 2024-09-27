@@ -1,3 +1,5 @@
+![screenshot](screenshot.png)
+
 **Getting Started**
 
 This guide outlines the steps required to install the Flutter SDK, set up your development environment, and run your Flutter app on various platforms:

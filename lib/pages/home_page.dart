@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> {
     }
     for (int i = 0; i < barrierX.length; i++) {
       if (barrierX[i] <= birdWidth &&
-              barrierX[i] + barrierWidth >= -birdHeight &&
+              barrierX[i] + barrierWidth >= -birdWidth &&
               (y <= -1 + barrierHeight[i][0]) ||
           y + birdHeight >= 1 - barrierHeight[i][1]) {
         return true;
