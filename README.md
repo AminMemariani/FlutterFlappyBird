@@ -1,3 +1,5 @@
+**Screen Shot**
+
 ![screenshot](screenshot.png)
 
 **Getting Started**
