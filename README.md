@@ -2,7 +2,7 @@
 
 ![screenshot](screenshot.png)
 
-**WebDemo(using WASM):**
+**Demo(using WASM):**
 https://aminmemariani.github.io/FlutterFlappyBirdWeb/
 
 **Getting Started**
